@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Econet e-Novate Expo 2025 - Attendance</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; font-family: 'Roboto', sans-serif; color:#fff;
+         background: url('https://images.unsplash.com/photo-1581091215362-5f5f1c23c0ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080') center/cover no-repeat; }
+  header { text-align:center; padding:50px 20px; }
+  h1 { font-size:2rem; color:#00ffff; margin-bottom:20px; }
+  form { background: rgba(0,0,0,0.7); padding:20px; max-width:400px; margin:auto; border-radius:10px; }
+  label { display:block; margin-top:10px; }
+  input[type=checkbox] { margin-right:10px; }
+  button { padding:10px 20px; border:none; border-radius:5px; background:#00ffff; color:#000; font-weight:700; cursor:pointer; width:100%; margin-top:20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Select Attendance Days</h1>
+  <p>Step 2: Choose which days you'll attend</p>
+</header>
+
+<form id="attendanceForm">
+  <label><input type="checkbox" name="days" value="Day 1"> Day 1: 8 Dec</label>
+  <label><input type="checkbox" name="days" value="Day 2"> Day 2: 9 Dec</label>
+  <label><input type="checkbox" name="days" value="Day 3"> Day 3: 10 Dec</label>
+  <button type="submit">Next → Keynote Speakers</button>
+</form>
+
+<script>
+  const rsvpData = JSON.parse(localStorage.getItem('rsvpData')) || {};
+
+  document.getElementById('attendanceForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const selectedDays = Array.from(document.querySelectorAll('input[name="days"]:checked')).map(d=>d.value);
+    if(selectedDays.length === 0){
+      alert("Please select at least one day!");
+      return;
+    }
+    rsvpData.days = selectedDays;
+    localStorage.setItem('rsvpData', JSON.stringify(rsvpData));
+    window.location.href = "speakers.html";
+  });
+</script>
+
+</body>
+</html>
