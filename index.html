@@ -1,111 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Econet_e_Novate_Expo_2025 | Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body { margin:0; font-family:'Roboto',sans-serif; color:#f5f7ff; }
-
-    /* AI background (replace the URL with your own image path if you host it locally) */
-    .bg-home {
-      background-image:url("2024-11-25-010004496-Nine_technologies_revolutionizing_the_global_healthcare_industry.jpg");
-      background-size:cover;
-      background-position:center;
-      background-attachment:fixed;
-    }
-
-    .shell {
-      min-height:100vh;
-      background:linear-gradient(135deg,rgba(5,13,35,0.86),rgba(7,25,61,0.9));
-    }
-
-    header {
-      background:rgba(3,8,30,0.9);
-      padding:16px 32px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      backdrop-filter:blur(10px);
-    }
-    header h1 { margin:0; font-size:1.4rem; color:#00f6ff; }
-    nav a {
-      color:#f5f7ff;
-      text-decoration:none;
-      margin-left:16px;
-      font-weight:700;
-      font-size:0.95rem;
-    }
-    nav a.active, nav a:hover { color:#00f6ff; }
-
-    .hero {
-      padding:60px 8vw;
-      min-height:calc(100vh - 72px);
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      background:linear-gradient(135deg,rgba(5,13,35,0.88),rgba(7,25,61,0.82));
-    }
-    .hero h2 { font-size:2rem; margin-bottom:10px; }
-    .btn {
-      display:inline-block;
-      background:linear-gradient(90deg,#00f6ff,#32ff9c);
-      color:#02040a;
-      padding:10px 24px;
-      text-decoration:none;
-      font-weight:700;
-      border-radius:999px;
-      margin-top:10px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Econet e-Novate Expo 2025</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-home">
-<div class="shell">
-  <header>
-    <h1>Econet_e_Novate_Expo_2025</h1>
-    <nav>
-      <a href="index.html" class="active">Home</a>
-      <a href="signup.html">Join Expo</a>
-      <a href="speakers.html">Speakers</a>
-      <a href="schedule.html">Schedule</a>
-      <a href="exhibitors.html">Exhibitors</a>
-      <a href="community.html">Community</a>
-      <a href="admin.html">Admin</a>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <h2>Welcome to Econet e-Novate Expo 2025</h2>
-    <p>Date: 8–10 December 2025 | Time: 9:30 AM daily</p>
-    <p>Venue: HICC Main Auditorium, Harare | Admission: Free</p>
-    <p>Theme: Future-Ready Tech Synergies</p>
+<body class="home-bg">
+
+<header>
+    <h1>Econet e-Novate Expo 2025</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="signup.html">Join Expo</a>
+        <a href="speakers.html">Speakers</a>
+        <a href="schedule.html">Schedule</a>
+        <a href="exhibitors.html">Exhibitors</a>
+        <a href="community.html">Community</a>
+        <a href="admin.html">Admin</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Future-Ready Tech Synergies</h2>
+    <p>8–10 December 2025 • Harare International Conference Centre</p>
     <a class="btn" href="signup.html">Join Expo</a>
     <p id="countdown"></p>
-  </section>
-</div>
+</section>
 
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-<script>
-  emailjs.init("yOwYpcXjeLqxfopJb");
-
-  const countdownEl = document.getElementById('countdown');
-  if (countdownEl) {
-    const eventDate = new Date("December 8, 2025 09:30:00").getTime();
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = eventDate - now;
-      if (distance > 0) {
-        const days = Math.floor(distance / (1000*60*60*24));
-        const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
-        const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
-        const seconds = Math.floor((distance % (1000*60))/1000);
-        countdownEl.innerText = `Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-      } else {
-        countdownEl.innerText = "The Expo is Live!";
-      }
-    }, 1000);
-  }
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>
