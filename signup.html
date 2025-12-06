@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSVP - Econet e-Novate Expo 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+<style>
+body { margin:0; font-family:'Roboto',sans-serif; color:#fff; background:url('https://images.unsplash.com/photo-1581091215360-cd9f03f5f6c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080') center/cover no-repeat; }
+header { background: rgba(0,0,0,0.6); padding:20px; text-align:center; }
+header h1 { margin:0; color:#00ffff; }
+form { max-width:500px; margin:auto; padding:20px; background: rgba(0,0,0,0.7); border-radius:10px; }
+input, select, textarea, button { width:100%; padding:10px; margin:5px 0; border-radius:5px; border:none; }
+button { background:#00ffff; color:#000; font-weight:700; cursor:pointer; }
+#signupMessage { color:#0f0; margin-top:10px; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+<h1>Join Econet e-Novate Expo 2025</h1>
+</header>
+
+<form id="signupForm">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="tel" name="phone" placeholder="Phone" required>
+    <select name="ageGroup" required>
+        <option value="">Select Age Group</option>
+        <option value="Under 18">Under 18</option>
+        <option value="18-24">18-24</option>
+        <option value="25-35">25-35</option>
+        <option value="35+">35+</option>
+    </select>
+    <select name="occupation" required>
+        <option value="">Select Occupation</option>
+        <option value="Student">Student</option>
+        <option value="Innovator">Innovator</option>
+        <option value="Professional">Professional</option>
+        <option value="Other">Other</option>
+    </select>
+    <label>Attendance Days:</label><br>
+    <input type="checkbox" name="days" value="Day 1"> Day 1
+    <input type="checkbox" name="days" value="Day 2"> Day 2
+    <input type="checkbox" name="days" value="Day 3"> Day 3<br>
+    <label>Interest Categories:</label><br>
+    <input type="checkbox" name="interest" value="AI"> AI
+    <input type="checkbox" name="interest" value="Robotics"> Robotics
+    <input type="checkbox" name="interest" value="IoT"> IoT
+    <input type="checkbox" name="interest" value="Coding"> Coding
+    <input type="checkbox" name="interest" value="Entrepreneurship"> Entrepreneurship
+    <input type="checkbox" name="interest" value="Gaming"> Gaming
+    <input type="checkbox" name="interest" value="VR/AR"> VR/AR
+    <button type="submit">Submit RSVP</button>
+    <p id="signupMessage"></p>
+</form>
+
+<script>
+emailjs.init("yOwYpcXjeLqxfopJb");
+let rsvps = [];
+
+document.getElementById('signupForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const phone = form.phone.value;
+    const ageGroup = form.ageGroup.value;
+    const occupation = form.occupation.value;
+    const days = Array.from(form.elements["days"]).filter(d=>d.checked).map(d=>d.value);
+    const interest = Array.from(form.elements["interest"]).filter(i=>i.checked).map(i=>i.value);
+
+    const rsvp = {name,email,phone,ageGroup,occupation,days,interest,status:"Pending"};
+    rsvps.push(rsvp);
+
+    emailjs.send("service_n6q8s1o","_f4jj28d",{
+        from_name: name,
+        to_email: email,
+        message: `Dear ${name}, your RSVP for Econet e-Novate Expo 2025 is received.`
+    }).then(()=>{
+        document.getElementById('signupMessage').innerText = "RSVP submitted successfully! Redirecting to Speakers...";
+        setTimeout(()=>{ window.location.href="speakers.html"; }, 3000);
+    }).catch(err=>{
+        document.getElementById('signupMessage').innerText = "Error sending email. Please try again.";
+        console.error(err);
+    });
+
+    form.reset();
+});
+</script>
+</body>
+</html>
