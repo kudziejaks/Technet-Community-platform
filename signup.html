@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup - Econet E-Novate Expo 2025</title>
+    <title>Sign Up - Econet E-Novate Expo 2025</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script>
         (function(){
-            emailjs.init("yOwYpcXjeLqxfopJb");
+            emailjs.init("yOwYpcXjeLqxfopJb"); // Your Public Key
         })();
     </script>
     <style>
         body {
             margin: 0;
             font-family: 'Roboto', sans-serif;
-            background: url('https://source.unsplash.com/1600x900/?ai,innovation,technology') no-repeat center center fixed;
+            background: url('https://source.unsplash.com/1600x900/?ai,technology,innovation') no-repeat center center fixed;
             background-size: cover;
             color: white;
         }
@@ -33,35 +33,29 @@
         .container {
             max-width: 500px;
             margin: 100px auto;
-            background-color: rgba(0,0,0,0.6);
-            padding: 30px;
+            background-color: rgba(0,0,0,0.7);
+            padding: 40px;
             border-radius: 12px;
         }
         h2 {
             text-align: center;
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
+            margin-bottom: 30px;
         }
         input, select {
             width: 100%;
-            padding: 10px;
-            margin-top: 5px;
+            padding: 12px;
+            margin: 10px 0;
             border-radius: 6px;
             border: none;
         }
         button {
-            margin-top: 20px;
             width: 100%;
             padding: 15px;
-            font-size: 1.1rem;
             background-color: #ff4c00;
-            color: white;
             border: none;
             border-radius: 8px;
+            color: white;
+            font-size: 1.2rem;
             cursor: pointer;
         }
         button:hover {
@@ -79,58 +73,40 @@
     </nav>
 
     <div class="container">
-        <h2>Join Econet E-Novate Expo 2025</h2>
+        <h2>Sign Up for Econet E-Novate Expo 2025</h2>
         <form id="signup-form">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="phone">Phone</label>
-            <input type="text" id="phone" name="phone" required>
-
-            <label for="age">Age Group</label>
-            <select id="age" name="age" required>
-                <option value="">Select age group</option>
-                <option value="under18">Under 18</option>
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <select name="age_group" required>
+                <option value="">Select Age Group</option>
+                <option value="Under 18">Under 18</option>
                 <option value="18-25">18-25</option>
                 <option value="26-35">26-35</option>
                 <option value="36+">36+</option>
             </select>
-
-            <label for="occupation">Occupation</label>
-            <select id="occupation" name="occupation" required>
-                <option value="">Select occupation</option>
-                <option value="student">Student</option>
-                <option value="innovator">Innovator</option>
-                <option value="other">Other</option>
+            <select name="occupation" required>
+                <option value="">Select Occupation</option>
+                <option value="Student">Student</option>
+                <option value="Innovator">Innovator</option>
+                <option value="Other">Other</option>
             </select>
-
-            <button type="submit">Sign Up</button>
+            <button type="submit">Submit</button>
         </form>
     </div>
 
     <script>
-        const form = document.getElementById('signup-form');
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            emailjs.send('service_n6q8s1o', 'template_f4jj28d', {
-                name: form.name.value,
-                email: form.email.value,
-                phone: form.phone.value,
-                age: form.age.value,
-                occupation: form.occupation.value
-            })
-            .then(() => {
-                alert('Sign-up successful! Thank you for joining Econet E-Novate Expo 2025.');
-                form.reset();
-            }, (err) => {
-                alert('Oops! Something went wrong. Please try again.');
-                console.error(err);
-            });
+            emailjs.sendForm('f4jj28d', 'template_f4jj28d', this)
+                .then(function() {
+                    alert('Sign up successful! Check your email confirmation.');
+                    document.getElementById('signup-form').reset();
+                }, function(error) {
+                    console.error('FAILED...', error);
+                    alert('Oops! Something went wrong. Please try again.');
+                });
         });
     </script>
 </body>
