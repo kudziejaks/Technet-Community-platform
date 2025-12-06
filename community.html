@@ -1,55 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Community – Econet e-Novate Expo</title>
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - Econet E-Novate Expo 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("yOwYpcXjeLqxfopJb");
+        })();
+    </script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: url('https://source.unsplash.com/1600x900/?ai,network,technology') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: rgba(0,0,0,0.6);
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 800px;
+            margin: 100px auto;
+            background-color: rgba(0,0,0,0.7);
+            padding: 30px;
+            border-radius: 12px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            border-radius: 6px;
+            border: none;
+            margin-bottom: 10px;
+        }
+        form input, form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: none;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            background-color: #ff4c00;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff7333;
+        }
+        .post {
+            background-color: rgba(255,255,255,0.1);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        .post h4 {
+            margin: 0;
+        }
+        .post p {
+            margin: 5px 0 0 0;
+        }
+    </style>
 </head>
-
-<body class="community-bg">
-
-<header>
+<body>
     <nav>
         <a href="index.html">Home</a>
-        <a href="signup.html">Join Expo</a>
-        <a href="speakers.html">Speakers</a>
-        <a href="schedule.html">Schedule</a>
-        <a href="exhibitors.html">Exhibitors</a>
+        <a href="community.html">Community</a>
+        <a href="profile.html">Innovators</a>
         <a href="admin.html">Admin</a>
+        <a href="login.html">Login</a>
     </nav>
-</header>
 
-<section class="container">
-    <h2>Community Innovators</h2>
+    <div class="container">
+        <h2>Community Feed</h2>
 
-    <div class="card-grid">
+        <form id="community-form">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="text" id="project" name="project" placeholder="Project / Challenge" required>
+            <textarea id="status" name="status" placeholder="Progress / Hindrances" required></textarea>
+            <select id="collaboration" name="collaboration" required>
+                <option value="">Open to Collaboration?</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <button type="submit">Share</button>
+        </form>
 
-        <div class="card">
-            <h3>Alice Chikafu</h3>
-            <p>AI Developer</p>
-            <p><em>Open to Collaboration</em></p>
+        <div id="posts">
+            <!-- Posts will appear here -->
         </div>
-
-        <div class="card">
-            <h3>Brian Moyo</h3>
-            <p>Robotics Startup Founder</p>
-            <p><em>Open to Collaboration</em></p>
-        </div>
-
-        <div class="card">
-            <h3>Tendai Mataruse</h3>
-            <p>VR Simulation Artist</p>
-            <p><em>Open to Collaboration</em></p>
-        </div>
-
-        <div class="card">
-            <h3>Nolwazi Dube</h3>
-            <p>IoT Product Builder</p>
-            <p><em>Mentorship Available</em></p>
-        </div>
-
     </div>
-</section>
 
+    <script>
+        const form = document.getElementById('community-form');
+        const postsDiv = document.getElementById('posts');
+
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+
+            const postData = {
+                name: form.name.value,
+                project: form.project.value,
+                status: form.status.value,
+                collaboration: form.collaboration.value
+            };
+
+            // Display post on page
+            const postEl = document.createElement('div');
+            postEl.className = 'post';
+            postEl.innerHTML = `
+                <h4>${postData.name} - ${postData.project}</h4>
+                <p>${postData.status}</p>
+                <p><strong>Open to Collaboration:</strong> ${postData.collaboration}</p>
+            `;
+            postsDiv.prepend(postEl);
+
+            // Send via EmailJS
+            emailjs.send('service_n6q8s1o', 'template_f4jj28d', postData)
+            .then(() => {
+                console.log('Post submitted via EmailJS');
+            }, (err) => {
+                console.error('Error sending post', err);
+            });
+
+            form.reset();
+        });
+    </script>
 </body>
 </html>
