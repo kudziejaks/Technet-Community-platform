@@ -1,7 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Econet_e_Novate_Expo_2025 | Join Expo</title>
-  <
+<meta charset="UTF-8">
+<title>RSVP – Econet e-Novate Expo</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="signup-bg">
+
+<header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="speakers.html">Speakers</a>
+        <a href="schedule.html">Schedule</a>
+        <a href="exhibitors.html">Exhibitors</a>
+        <a href="community.html">Community</a>
+        <a href="admin.html">Admin</a>
+    </nav>
+</header>
+
+<section class="container">
+    <h2>RSVP / Join Expo</h2>
+
+    <form id="signupForm">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="phone" placeholder="Phone" required>
+
+        <select name="ageGroup" required>
+            <option value="">Select Age Group</option>
+            <option value="Under 18">Under 18</option>
+            <option value="18-24">18-24</option>
+            <option value="25-35">25-35</option>
+            <option value="35+">35+</option>
+        </select>
+
+        <select name="occupation" required>
+            <option value="">Occupation</option>
+            <option value="Student">Student</option>
+            <option value="Innovator">Innovator</option>
+            <option value="Professional">Professional</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label>Attendance Days:</label>
+        <label><input type="checkbox" name="days" value="Day 1"> Day 1</label>
+        <label><input type="checkbox" name="days" value="Day 2"> Day 2</label>
+        <label><input type="checkbox" name="days" value="Day 3"> Day 3</label>
+
+        <button type="submit">Submit RSVP</button>
+    </form>
+
+    <p id="signupMessage"></p>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+<script src="js/email.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
