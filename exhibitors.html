@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exhibitors - Econet e-Novate Expo 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body { margin:0; font-family:'Roboto',sans-serif; color:#fff; background:url('https://images.unsplash.com/photo-1558389769-bf819c602111?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080') center/cover no-repeat; }
+header { background: rgba(0,0,0,0.6); padding:20px; text-align:center; }
+header h1 { margin:0; color:#00ffff; }
+nav { display:flex; justify-content:center; gap:20px; margin-top:10px; }
+nav a { color:#fff; text-decoration:none; font-weight:700; }
+table { width:90%; margin:auto; border-collapse: collapse; margin-top:20px; background: rgba(0,0,0,0.7); }
+th, td { border:1px solid #00ffff; padding:10px; text-align:center; }
+button { padding:5px 10px; background:#00ffff; color:#000; border:none; border-radius:5px; cursor:pointer; }
+</style>
+</head>
+<body>
+
+<header>
+<h1>Exhibitors Directory</h1>
+<nav>
+    <a href="index.html">Home</a>
+    <a href="signup.html">Join Expo</a>
+    <a href="speakers.html">Speakers</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="exhibitors.html">Exhibitors</a>
+    <a href="community.html">Community</a>
+    <a href="admin.html">Admin</a>
+</nav>
+</header>
+
+<table>
+<tr><th>Company</th><th>Area</th><th>Booth</th><th>Description</th><th>Action</th></tr>
+<tr>
+<td>Tech Innovations</td>
+<td>AI</td>
+<td>101</td>
+<td>AI-driven solutions for businesses</td>
+<td><button onclick="alert('Visit Tech Innovations Booth 101')">Visit Booth</button></td>
+</tr>
+<tr>
+<td>Robotics Hub</td>
+<td>Robotics</td>
+<td>102</td>
+<td>Robotic automation solutions</td>
+<td><button onclick="alert('Visit Robotics Hub Booth 102')">Visit Booth</button></td>
+</tr>
+<tr>
+<td>SolarX</td>
+<td>Solar</td>
+<td>103</td>
+<td>Innovative solar energy solutions</td>
+<td><button onclick="alert('Visit SolarX Booth 103')">Visit Booth</button></td>
+</tr>
+</table>
+<p style="text-align:center; margin-top:20px;">Redirecting to Community in 5 seconds...</p>
+
+<script>
+setTimeout(()=>{ window.location.href="community.html"; },5000);
+</script>
+
+</body>
+</html>
