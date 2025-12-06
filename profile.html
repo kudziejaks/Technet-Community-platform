@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovator Profiles - Econet E-Novate Expo 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("yOwYpcXjeLqxfopJb");
+        })();
+    </script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: url('https://source.unsplash.com/1600x900/?ai,startup,technology') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: rgba(0,0,0,0.6);
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 900px;
+            margin: 80px auto;
+            background-color: rgba(0,0,0,0.7);
+            padding: 30px;
+            border-radius: 12px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .profile-form input, .profile-form textarea, .profile-form select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: none;
+        }
+        .profile-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ff4c00;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .profile-form button:hover {
+            background-color: #ff7333;
+        }
+        .profiles {
+            margin-top: 30px;
+        }
+        .profile-card {
+            background-color: rgba(255,255,255,0.1);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        .profile-card h4 {
+            margin: 0;
+        }
+        .profile-card p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="community.html">Community</a>
+        <a href="profile.html">Innovators</a>
+        <a href="admin.html">Admin</a>
+        <a href="login.html">Login</a>
+    </nav>
+
+    <div class="container">
+        <h2>Innovator Profiles</h2>
+
+        <form class="profile-form" id="profile-form">
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="text" id="skills" placeholder="Skills (comma-separated)" required>
+            <textarea id="projects" placeholder="Projects / Startup Ideas" required></textarea>
+            <select id="collaboration" required>
+                <option value="">Open to Collaboration?</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <button type="submit">Add Profile</button>
+        </form>
+
+        <div class="profiles" id="profiles">
+            <!-- Profiles will appear here -->
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('profile-form');
+        const profilesDiv = document.getElementById('profiles');
+
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+
+            const profileData = {
+                name: form.name.value,
+                skills: form.skills.value,
+                projects: form.projects.value,
+                collaboration: form.collaboration.value
+            };
+
+            // Display profile on page
+            const card = document.createElement('div');
+            card.className = 'profile-card';
+            card.innerHTML = `
+                <h4>${profileData.name}</h4>
+                <p><strong>Skills:</strong> ${profileData.skills}</p>
+                <p><strong>Projects / Ideas:</strong> ${profileData.projects}</p>
+                <p><strong>Open to Collaboration:</strong> ${profileData.collaboration}</p>
+            `;
+            profilesDiv.prepend(card);
+
+            // Send profile via EmailJS
+            emailjs.send('service_n6q8s1o', 'template_f4jj28d', profileData)
+            .then(() => console.log('Profile submitted via EmailJS'))
+            .catch(err => console.error('Error sending profile', err));
+
+            form.reset();
+        });
+    </script>
+</body>
+</html>
