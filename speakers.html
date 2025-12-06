@@ -3,43 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Econet e-Novate Expo 2025 - Speakers</title>
+<title>Speakers - Econet e-Novate Expo 2025</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  body { margin:0; font-family: 'Roboto', sans-serif; color:#fff;
-         background: url('https://images.unsplash.com/photo-1554475901-4538ddfbccc1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080') center/cover no-repeat; }
-  header { text-align:center; padding:50px 20px; }
-  h1 { font-size:2rem; color:#00ffff; margin-bottom:20px; }
-  .dashboard { display:flex; justify-content:center; flex-wrap:wrap; gap:20px; }
-  .card { background: rgba(0,0,0,0.7); padding:20px; border-radius:10px; width:250px; text-align:center; }
-  button { padding:10px 20px; border:none; border-radius:5px; background:#00ffff; color:#000; font-weight:700; cursor:pointer; margin-top:20px; }
+body { margin:0; font-family:'Roboto',sans-serif; color:#fff; background:url('https://images.unsplash.com/photo-1581090700220-54b3a7ec0e15?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080') center/cover no-repeat; }
+header { background: rgba(0,0,0,0.6); padding:20px; text-align:center; }
+header h1 { margin:0; color:#00ffff; }
+nav { display:flex; justify-content:center; gap:20px; margin-top:10px; }
+nav a { color:#fff; text-decoration:none; font-weight:700; }
+section { padding:50px; text-align:center; }
+.card { background: rgba(0,0,0,0.7); display:inline-block; width:250px; padding:20px; margin:15px; border-radius:10px; }
+.card h4 { color:#00ffff; margin-bottom:5px; }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Keynote Speakers</h1>
-  <p>Step 3: Meet our speakers</p>
+<h1>Keynote Speakers</h1>
+<nav>
+    <a href="index.html">Home</a>
+    <a href="signup.html">Join Expo</a>
+    <a href="speakers.html">Speakers</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="exhibitors.html">Exhibitors</a>
+    <a href="community.html">Community</a>
+    <a href="admin.html">Admin</a>
+</nav>
 </header>
 
-<div class="dashboard">
-  <div class="card">
-    <h4>Natalie Jabangwe</h4>
-    <p>Computer Engineer & Business Leader</p>
-  </div>
-  <div class="card">
-    <h4>Professor Arthur Mutambara</h4>
-    <p>Academic, Author, Robotist</p>
-  </div>
-  <div class="card">
-    <h4>Dr Alfred Musarurwa</h4>
-    <p>CTO, Stanbic Bank Zimbabwe</p>
-  </div>
+<section>
+<div class="card">
+<h4>Natalie Jabangwe</h4>
+<p>Computer Engineer & Business Leader</p>
 </div>
+<div class="card">
+<h4>Professor Arthur Mutambara</h4>
+<p>Academic, Author, Robotist</p>
+</div>
+<div class="card">
+<h4>Dr Alfred Musarurwa</h4>
+<p>CTO, Stanbic Bank Zimbabwe</p>
+</div>
+<p>Redirecting to Schedule in 5 seconds...</p>
+</section>
 
-<div style="text-align:center;">
-  <button onclick="window.location.href='schedule.html'">Next → Schedule</button>
-</div>
+<script>
+// Auto-redirect to schedule after 5 seconds
+setTimeout(()=>{ window.location.href="schedule.html"; },5000);
+</script>
 
 </body>
 </html>
