@@ -4,111 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Econet E-Novate Expo 2025</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <script>
-        (function(){
-            emailjs.init("yOwYpcXjeLqxfopJb");
-        })();
-    </script>
+
     <style>
         body {
             margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background: url('https://source.unsplash.com/1600x900/?ai,cybersecurity,tech') no-repeat center center fixed;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #00111f, #002d5a, #000000);
             background-size: cover;
+            background-attachment: fixed;
             color: white;
         }
-        nav {
-            display: flex;
-            justify-content: space-around;
-            padding: 20px;
-            background-color: rgba(0,0,0,0.6);
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
+
         .container {
-            max-width: 400px;
-            margin: 150px auto;
-            background-color: rgba(0,0,0,0.6);
+            width: 100%;
+            max-width: 380px;
+            margin: 100px auto;
+            background: rgba(0, 0, 0, 0.55);
             padding: 30px;
-            border-radius: 12px;
-        }
-        h2 {
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0, 153, 255, 0.5);
             text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            font-size: 26px;
             margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(0, 140, 255, 0.9);
         }
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-        input {
+
+        input[type="email"],
+        input[type="password"] {
             width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 6px;
+            padding: 12px;
+            margin: 10px 0;
             border: none;
+            border-radius: 8px;
         }
+
         button {
-            margin-top: 20px;
             width: 100%;
-            padding: 15px;
-            font-size: 1.1rem;
-            background-color: #ff4c00;
+            padding: 12px;
+            margin-top: 15px;
+            background: #0077ff;
             color: white;
             border: none;
             border-radius: 8px;
+            font-size: 16px;
             cursor: pointer;
         }
+
         button:hover {
-            background-color: #ff7333;
+            background: #3399ff;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);} 
+            to {opacity: 1; transform: translateY(0);} 
+        }
+
+        .error {
+            color: #ff5c5c;
+            margin-top: 10px;
         }
     </style>
 </head>
+
 <body>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="community.html">Community</a>
-        <a href="profile.html">Innovators</a>
-        <a href="admin.html">Admin</a>
-        <a href="signup.html">Sign Up</a>
-    </nav>
 
-    <div class="container">
-        <h2>Login</h2>
-        <form id="login-form">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+<nav style="display:flex;justify-content:space-around;padding:20px;background:rgba(0,0,0,0.6);color:white;font-weight:bold;">
+  <a href="index.html" style="color:white;text-decoration:none;">Home</a>
+  <a href="community.html" style="color:white;text-decoration:none;">Community</a>
+  <a href="signup.html" style="color:white;text-decoration:none;">Signup</a>
+  <a href="login.html" style="color:white;text-decoration:none;">Login</a>
+</nav>
 
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
+<div class="container">
+    <h1>Login</h1>
 
-            <button type="submit">Login</button>
-        </form>
-    </div>
+    <form id="login-form">
+        <input type="email" id="email" placeholder="Email Address" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
 
-    <script>
-        const loginForm = document.getElementById('login-form');
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+    <p id="error-msg" class="error"></p>
+</div>
 
-            // Placeholder for Node.js/EmailJS login
-            emailjs.send('service_n6q8s1o', 'template_f4jj28d', {
-                email: loginForm.email.value,
-                password: loginForm.password.value
-            })
-            .then(() => {
-                alert('Login request sent! Admin or system will verify.');
-                loginForm.reset();
-            }, (err) => {
-                alert('Oops! Something went wrong.');
-                console.error(err);
-            });
-        });
-    </script>
+<script>
+    const loginForm = document.getElementById('login-form');
+    const errorMsg = document.getElementById('error-msg');
+
+    loginForm.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        // SIMPLE DEMO LOGIN (no backend)
+        // You can replace this with real validation later
+
+        if(email.trim() === "" || password.trim() === ""){
+            errorMsg.textContent = "Please fill in all fields.";
+            return;
+        }
+
+        // temp: allow login if any email + any password
+        alert("Login successful!");
+        window.location.href = "community.html";
+    });
+</script>
+
 </body>
 </html>
