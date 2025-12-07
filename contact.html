@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - Econet E-Novate Expo 2025</title>
+<style>
+body {margin:0;font-family:Arial,sans-serif;color:white;background: linear-gradient(135deg, #00111f, #002d5a, #000000);height:100vh;}
+.navbar {width:100%;background:rgba(0,0,0,0.6);padding:15px 0;position:fixed;top:0;display:flex;justify-content:center;}
+.navbar a {color:white;margin:0 20px;text-decoration:none;font-size:18px;font-weight:bold;}
+.navbar a:hover {color:#00aaff;}
+.container {max-width:600px;margin:150px auto;background: rgba(0,0,0,0.7);padding:30px;border-radius:12px;}
+h1{text-align:center;margin-bottom:20px;}
+form input, form textarea, form button {width:100%;padding:12px;margin-bottom:10px;border-radius:8px;border:none;}
+form button {background:#0077ff;color:white;font-size:16px;cursor:pointer;}
+form button:hover {background:#3399ff;}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+(function(){emailjs.init("PDrVeqCdvP_n93wbJ");})();
+
+function sendContact(e){
+  e.preventDefault();
+  const data = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    message: document.getElementById('message').value
+  };
+  emailjs.send('service_n6q8s1o','template_f4jj28d',data)
+    .then(()=>{alert('Message sent successfully!'); document.getElementById('contact-form').reset();})
+    .catch(err=>{alert('Error sending message.'); console.error(err);});
+}
+</script>
+</head>
+<body>
+<div class="navbar">
+<a href="index.html">Home</a>
+<a href="join.html">Join</a>
+<a href="signup.html">Sign Up</a>
+<a href="about.html">About</a>
+<a href="community.html">Community</a>
+<a href="login.html">Login</a>
+</div>
+<div class="container">
+<h1>Contact Us</h1>
+<form id="contact-form" onsubmit="sendContact(event)">
+<input type="text" id="name" placeholder="Your Name" required>
+<input type="email" id="email" placeholder="Your Email" required>
+<textarea id="message" placeholder="Your Message" rows="6" required></textarea>
+<button type="submit">Send Message</button>
+</form>
+</div>
+</body>
+</html>
