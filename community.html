@@ -19,9 +19,10 @@
     body {
         margin: 0;
         font-family: 'Roboto', sans-serif;
-        background: url('https://source.unsplash.com/1600x900/?blue,green,ai,technology') no-repeat center center fixed;
-        background-size: cover;
+        /* Blue and green gradient background */
+        background: linear-gradient(135deg, #0072ff, #00ff88);
         color: white;
+        min-height: 100vh;
     }
 
     nav {
@@ -218,7 +219,9 @@
                 <p>${postData.status}</p>
                 <p><strong>Open to Collaboration:</strong> ${postData.collaboration}</p>
                 <div class="post-actions">
-                    ${postData.collaboration === 'Yes' ? `<button class="chat-btn" onclick="window.location='mailto:${postData.email}'">Chat Up</button>` : ''}
+                    ${postData.collaboration === 'Yes' 
+                        ? `<button class="chat-btn" onclick="window.location='mailto:${postData.email}?subject=Collaboration on ${encodeURIComponent(postData.project)}&body=Hi ${encodeURIComponent(postData.name)}, I saw your project on Econet E-Novate Expo Community and would like to collaborate.'">Chat Up</button>` 
+                        : ''}
                     ${isAdmin ? `<button class="delete-btn" onclick="deletePost(${index})">Delete</button>` : ''}
                 </div>
             `;
