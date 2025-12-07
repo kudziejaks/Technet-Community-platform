@@ -3,147 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JoinExpo | Econote E-Novate Expo 2025</title>
+    <title>Join Expo</title>
 
-    <!-- EmailJS -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script>
-        emailjs.init("yOwYpcXjeLqxfopJb");
-    </script>
-
+    <!-- AI BACKGROUND -->
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', sans-serif;
-
-            /* Tech gradient background */
-            background: linear-gradient(135deg, #0a0f24, #1a2a6c, #3a7bd5);
+            background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
             background-size: cover;
+            font-family: Arial, sans-serif;
             color: white;
         }
 
+        /* NAVIGATION BAR */
+        nav {
+            width: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        nav a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        nav a:hover {
+            color: #00eaff;
+        }
+
+        /* FORM CONTAINER */
         .container {
+            margin-top: 120px;
             width: 90%;
             max-width: 450px;
-            margin: 50px auto;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
+            padding: 25px;
+            background: rgba(0,0,0,0.6);
             border-radius: 15px;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(6px);
         }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        label {
-            font-weight: 500;
-        }
-
-        input, select {
+        input {
             width: 100%;
             padding: 12px;
-            margin: 8px 0 20px 0;
             border-radius: 8px;
             border: none;
-            outline: none;
+            margin-bottom: 15px;
         }
 
         button {
             width: 100%;
-            padding: 12px;
-            border: none;
-            background: #3a7bd5;
-            color: white;
+            padding: 13px;
             border-radius: 8px;
+            border: none;
+            background: #00eaff;
+            color: black;
+            font-weight: bold;
+            font-size: 17px;
             cursor: pointer;
-            font-size: 16px;
-            transition: 0.3s;
         }
 
         button:hover {
-            background: #285ea8;
+            background: #00cce0;
         }
 
-        #message {
+        h2 {
             text-align: center;
-            margin-top: 15px;
-            font-weight: 600;
         }
     </style>
 </head>
-
 <body>
 
-    <div class="container">
-        <h2>Join Expo 2025</h2>
+<!-- NAVIGATION -->
+<nav>
+    <a href="index.html">Home</a>
+    <a href="join.html">Join Expo</a>
+    <a href="community.html">Community</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+</nav>
 
-        <form id="joinExpoForm">
-            
-            <label>Full Name</label>
-            <input type="text" id="name" name="name" required>
+<!-- FORM -->
+<div class="container">
+    <h2>Join Econote E_Novate Expo 2025</h2>
 
-            <label>Email</label>
-            <input type="email" id="email" name="email" required>
+    <form id="signupForm">
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Email Address" required>
+        <input type="tel" id="phone" placeholder="Phone Number" required>
+        <input type="number" id="age" placeholder="Age" required>
+        <input type="text" id="occupation" placeholder="Occupation" required>
+        <button type="submit">Join Expo</button>
+    </form>
+</div>
 
-            <label>Phone</label>
-            <input type="tel" id="phone" name="phone" required>
+<!-- EMAILJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-            <label>Age Group</label>
-            <select id="age" name="age" required>
-                <option value="">Select</option>
-                <option value="Under 13">Under 13</option>
-                <option value="13-17">13-17</option>
-                <option value="18-24">18-24</option>
-                <option value="25+">25+</option>
-            </select>
+<script>
+emailjs.init("yOwYpcXjeLqxfopJb");
 
-            <label>Occupation</label>
-            <select id="occupation" name="occupation" required>
-                <option value="">Select</option>
-                <option value="Student">Student</option>
-                <option value="Entrepreneur">Entrepreneur</option>
-                <option value="Investor">Investor</option>
-                <option value="Developer">Developer</option>
-                <option value="Other">Other</option>
-            </select>
+document.getElementById("signupForm").addEventListener("submit", function(event) {
+    event.preventDefault();
 
-            <button type="submit">Sign Up</button>
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let age = document.getElementById("age").value;
+    let occupation = document.getElementById("occupation").value;
 
-            <div id="message"></div>
-
-        </form>
-    </div>
-
-    <script>
-        const form = document.getElementById("joinExpoForm");
-        const message = document.getElementById("message");
-
-        form.addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            // Send EmailJS
-            emailjs.send("service_n6q8s1o", "template_f4jj28d", {
-                name: form.name.value,
-                email: form.email.value,
-                phone: form.phone.value,
-                age: form.age.value,
-                occupation: form.occupation.value,
-            })
-            .then(function () {
-                message.style.color = "lightgreen";
-                message.textContent = "✔ Successfully submitted! See you at the Expo!";
-                form.reset();
-            })
-            .catch(function (error) {
-                message.style.color = "red";
-                message.textContent = "✖ Error sending. Check network or EmailJS settings.";
-                console.error(error);
-            });
-        });
-    </script>
+    emailjs.send("service_n6q8s1o", "template_f4jj28d", {
+        name: name,
+        email: email,
+        phone: phone,
+        age: age,
+        occupation: occupation
+    })
+    .then(function() {
+        alert("🎉 Thank you for joining the Expo!");
+        document.getElementById("signupForm").reset();
+    }, function(error) {
+        alert("❌ Failed to send. Please try again.");
+    });
+});
+</script>
 
 </body>
 </html>
