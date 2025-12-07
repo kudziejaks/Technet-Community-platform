@@ -58,9 +58,16 @@
         button:hover {
             background: #3399ff;
         }
-    </style>
+    @keyframes fadeIn {from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
+</style>
 </head>
 <body>
+<nav style="display:flex;justify-content:space-around;padding:20px;background:rgba(0,0,0,0.6);color:white;font-weight:bold;">
+  <a href="index.html" style="color:white;text-decoration:none;">Home</a>
+  <a href="community.html" style="color:white;text-decoration:none;">Community</a>
+  <a href="signup.html" style="color:white;text-decoration:none;">Signup</a>
+  <a href="login.html" style="color:white;text-decoration:none;">Login</a>
+</nav>
     <div class="container">
         <h1>Welcome to Econet E-Novate Expo 2025</h1>
         <form>
@@ -70,5 +77,45 @@
             <button type="submit">Sign Up</button>
         </form>
     </div>
+  <h2 class="title">Welcome to Econet E-Novate Expo 2025</h2>
+  <form id="signup-form" class="form-box">
+    <input type="text" id="name" name="name" placeholder="Full Name" required>
+    <input type="email" id="email" name="email" placeholder="Email Address" required>
+    <input type="number" id="age" name="age" placeholder="Age" required>
+    <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+    <input type="text" id="occupation" name="occupation" placeholder="Occupation" required>
+    <button type="submit">Sign Up</button>
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("PDrVeqCdvP_n93wbJ");
+    })();
+
+    const form = document.getElementById('signup-form');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        age: form.age.value,
+        phone: form.phone.value,
+        occupation: form.occupation.value
+      };
+
+      emailjs.send("service_n6q8s1o", "template_f4jj28d", data)
+      .then(() => {
+        alert("Signup successful! Your details have been submitted.");
+        form.reset();
+        window.location.href = 'login.html';();
+      }, (err) => {
+        alert("Error sending message. Please try again.");
+        console.error(err);
+      });
+    });
+  </script>
 </body>
 </html>
