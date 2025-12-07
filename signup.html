@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup - Econet E-Novate Expo 2025</title>
 
     <style>
@@ -25,17 +25,16 @@
             border-radius: 15px;
             box-shadow: 0 0 25px rgba(0, 153, 255, 0.5);
             text-align: center;
+            animation: fadeIn 1s ease-in-out;
         }
 
         h1 {
-            font-size: 28px;
+            font-size: 25px;
             margin-bottom: 20px;
             text-shadow: 0 0 15px rgba(0, 140, 255, 0.9);
         }
 
-        input[type="text"],
-        input[type="email"],
-        input[type="password"] {
+        input {
             width: 100%;
             padding: 12px;
             margin: 10px 0;
@@ -58,64 +57,68 @@
         button:hover {
             background: #3399ff;
         }
-    @keyframes fadeIn {from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
-</style>
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+    </style>
 </head>
+
 <body>
+
 <nav style="display:flex;justify-content:space-around;padding:20px;background:rgba(0,0,0,0.6);color:white;font-weight:bold;">
   <a href="index.html" style="color:white;text-decoration:none;">Home</a>
   <a href="community.html" style="color:white;text-decoration:none;">Community</a>
   <a href="signup.html" style="color:white;text-decoration:none;">Signup</a>
   <a href="login.html" style="color:white;text-decoration:none;">Login</a>
 </nav>
-    <div class="container">
-        <h1>Welcome to Econet E-Novate Expo 2025</h1>
-        <form>
-            <input type="text" placeholder="Full Name" required />
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Password" required />
-            <button type="submit">Sign Up</button>
-        </form>
-    </div>
-  <h2 class="title">Welcome to Econet E-Novate Expo 2025</h2>
-  <form id="signup-form" class="form-box">
-    <input type="text" id="name" name="name" placeholder="Full Name" required>
-    <input type="email" id="email" name="email" placeholder="Email Address" required>
-    <input type="number" id="age" name="age" placeholder="Age" required>
-    <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
-    <input type="text" id="occupation" name="occupation" placeholder="Occupation" required>
-    <button type="submit">Sign Up</button>
-  </form>
 
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <script>
+<div class="container">
+    <h1>Welcome to Econet E-Novate Expo 2025</h1>
+
+    <form id="signup-form">
+        <input type="text" id="name" name="name" placeholder="Full Name" required>
+        <input type="email" id="email" name="email" placeholder="Email Address" required>
+        <input type="number" id="age" name="age" placeholder="Age" required>
+        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+        <input type="text" id="occupation" name="occupation" placeholder="Occupation" required>
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
     (function() {
-      emailjs.init("PDrVeqCdvP_n93wbJ");
+        emailjs.init("PDrVeqCdvP_n93wbJ"); // your public key
     })();
 
     const form = document.getElementById('signup-form');
 
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-      const data = {
-        name: form.name.value,
-        email: form.email.value,
-        age: form.age.value,
-        phone: form.phone.value,
-        occupation: form.occupation.value
-      };
+        const data = {
+            name: form.name.value,
+            email: form.email.value,
+            age: form.age.value,
+            phone: form.phone.value,
+            occupation: form.occupation.value
+        };
 
-      emailjs.send("service_n6q8s1o", "template_f4jj28d", data)
-      .then(() => {
-        alert("Signup successful! Your details have been submitted.");
-        form.reset();
-        window.location.href = 'login.html';();
-      }, (err) => {
-        alert("Error sending message. Please try again.");
-        console.error(err);
-      });
+        emailjs.send("service_n6q8s1o", "template_f4jj28d", data)
+        .then(() => {
+            alert("Signup successful! Your details have been submitted.");
+            form.reset();
+            window.location.href = "login.html"; // redirect
+        })
+        .catch((err) => {
+            alert("Error sending message. Please try again.");
+            console.error(err);
+        });
     });
-  </script>
+</script>
+
 </body>
 </html>
