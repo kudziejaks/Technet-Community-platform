@@ -1,142 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Expo</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup - Econet E-Novate Expo 2025</title>
 
-    <!-- AI BACKGROUND -->
     <style>
         body {
             margin: 0;
             padding: 0;
-            background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
-            background-size: cover;
             font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #00111f, #002d5a, #000000);
+            background-size: cover;
+            background-attachment: fixed;
             color: white;
         }
 
-        /* NAVIGATION BAR */
-        nav {
-            width: 100%;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            position: fixed;
-            top: 0;
-            left: 0;
-        }
-
-        nav a {
-            color: white;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 17px;
-        }
-
-        nav a:hover {
-            color: #00eaff;
-        }
-
-        /* FORM CONTAINER */
         .container {
-            margin-top: 120px;
-            width: 90%;
-            max-width: 450px;
-            padding: 25px;
-            background: rgba(0,0,0,0.6);
+            width: 100%;
+            max-width: 400px;
+            margin: 80px auto;
+            background: rgba(0, 0, 0, 0.55);
+            padding: 30px;
             border-radius: 15px;
-            backdrop-filter: blur(6px);
+            box-shadow: 0 0 25px rgba(0, 153, 255, 0.5);
+            text-align: center;
         }
 
-        input {
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(0, 140, 255, 0.9);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
             width: 100%;
             padding: 12px;
-            border-radius: 8px;
+            margin: 10px 0;
             border: none;
-            margin-bottom: 15px;
+            border-radius: 8px;
         }
 
         button {
             width: 100%;
-            padding: 13px;
-            border-radius: 8px;
+            padding: 12px;
+            margin-top: 15px;
+            background: #0077ff;
+            color: white;
             border: none;
-            background: #00eaff;
-            color: black;
-            font-weight: bold;
-            font-size: 17px;
+            border-radius: 8px;
+            font-size: 16px;
             cursor: pointer;
         }
 
         button:hover {
-            background: #00cce0;
-        }
-
-        h2 {
-            text-align: center;
+            background: #3399ff;
         }
     </style>
 </head>
 <body>
-
-<!-- NAVIGATION -->
-<nav>
-    <a href="index.html">Home</a>
-    <a href="join.html">Join Expo</a>
-    <a href="community.html">Community</a>
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
-</nav>
-
-<!-- FORM -->
-<div class="container">
-    <h2>Join Econote E_Novate Expo 2025</h2>
-
-    <form id="signupForm">
-        <input type="text" id="name" placeholder="Full Name" required>
-        <input type="email" id="email" placeholder="Email Address" required>
-        <input type="tel" id="phone" placeholder="Phone Number" required>
-        <input type="number" id="age" placeholder="Age" required>
-        <input type="text" id="occupation" placeholder="Occupation" required>
-        <button type="submit">Join Expo</button>
-    </form>
-</div>
-
-<!-- EMAILJS -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-<script>
-emailjs.init("yOwYpcXjeLqxfopJb");
-
-document.getElementById("signupForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-    let phone = document.getElementById("phone").value;
-    let age = document.getElementById("age").value;
-    let occupation = document.getElementById("occupation").value;
-
-    emailjs.send("service_n6q8s1o", "template_f4jj28d", {
-        name: name,
-        email: email,
-        phone: phone,
-        age: age,
-        occupation: occupation
-    })
-    .then(function() {
-        alert("🎉 Thank you for joining the Expo!");
-        document.getElementById("signupForm").reset();
-    }, function(error) {
-        alert("❌ Failed to send. Please try again.");
-    });
-});
-</script>
-
+    <div class="container">
+        <h1>Welcome to Econet E-Novate Expo 2025</h1>
+        <form>
+            <input type="text" placeholder="Full Name" required />
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password" required />
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
 </body>
 </html>
