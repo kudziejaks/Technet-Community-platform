@@ -1,25 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - Econet E-Novate Expo 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body {margin:0;font-family:'Roboto',sans-serif;background: linear-gradient(135deg, #00111f, #002d5a, #000000);color:white;}
+nav {display:flex;justify-content:space-around;padding:20px;background-color:rgba(0,0,0,0.6);}
+nav a {color:white;text-decoration:none;font-weight:bold;}
+.container {text-align:center;margin-top:100px;max-width:800px;margin-left:auto;margin-right:auto;}
+h1 {font-size:2.5rem;margin-bottom:20px;text-shadow:0 0 15px rgba(0,140,255,0.9);}
+p {font-size:1.2rem;margin-bottom:40px;}
+.feed {background-color:rgba(255,255,255,0.1);padding:15px;margin:10px 0;border-radius:8px;}
+.feed h4 {margin:0;}
+.feed p {margin:5px 0;}
+.delete-btn {padding:8px 12px;margin-top:10px;background-color:red;border:none;border-radius:6px;color:white;cursor:pointer;}
+.delete-btn:hover {background-color:darkred;}
+</style>
+</head>
+<body>
+<nav>
+<a href="index.html">Home</a>
+<a href="community.html">Community</a>
+<a href="profile.html">Innovators</a>
+<a href="admin.html">Admin</a>
+<a href="login.html">Login</a>
+</nav>
+<div class="container">
+<h1>Admin Dashboard - Econet E-Novate Expo 2025</h1>
+<p>Manage Community Posts</p>
+<div id="admin-posts"><!-- Admin posts appear here --></div>
+</div>
+<script>
 let posts = JSON.parse(localStorage.getItem('communityPosts')) || [];
 const adminPostsDiv = document.getElementById('admin-posts');
 
-function renderPosts() {
+function renderPosts(){
     adminPostsDiv.innerHTML = '';
-    posts.forEach((post, index) => {
+    posts.forEach((post,index)=>{
         const postEl = document.createElement('div');
-        postEl.className = 'feed';
-        postEl.innerHTML = `
+        postEl.className='feed';
+        postEl.innerHTML=`
             <h4>${post.name} - ${post.project}</h4>
             <p>${post.status}</p>
             <p><strong>Open to Collaboration:</strong> ${post.collaboration}</p>
+            <p><strong>Email:</strong> ${post.email}</p>
             <button class='delete-btn' onclick='deletePost(${index})'>Delete</button>
         `;
         adminPostsDiv.appendChild(postEl);
     });
 }
 
-function deletePost(index) {
-    posts.splice(index, 1); // Remove from array
-    localStorage.setItem('communityPosts', JSON.stringify(posts)); // Update localStorage
-    renderPosts(); // Refresh admin view
+function deletePost(index){
+    posts.splice(index,1);
+    localStorage.setItem('communityPosts',JSON.stringify(posts));
+    renderPosts();
 }
 
 renderPosts();
+</script>
+</body>
+</html>
